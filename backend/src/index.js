@@ -31,12 +31,21 @@ const startServer = async () => {
     await sequelize.authenticate();
     console.log('Database connection established successfully.');
 
-    await redisClient.connect();
-    console.log('Redis connection established successfully.');
+    if (redisClient) {
+      try {
+        await redisClient.connect();
+        console.log('Redis connection established successfully.');
+      } catch (error) {
+        console.warn('Redis connection failed, continuing without cache:', error.message);
+      }
+    } else {
+      console.warn('Redis not configured, running without cache.');
+    }
 
-    app.listen(PORT, () => {
+    app.listen(PORT, '0.0.0.0', () => {
       console.log(`Server is running on port ${PORT}`);
       console.log(`Environment: ${process.env.NODE_ENV}`);
+      console.log(`Access URL: http://localhost:${PORT}`);
     });
   } catch (error) {
     console.error('Unable to start server:', error);
@@ -49,6 +58,12 @@ startServer();
 process.on('SIGINT', async () => {
   console.log('Shutting down gracefully...');
   await sequelize.close();
-  await redisClient.quit();
+  if (redisClient) {
+    try {
+      await redisClient.quit();
+    } catch (error) {
+      console.warn('Redis quit error:', error.message);
+    }
+  }
   process.exit(0);
 });

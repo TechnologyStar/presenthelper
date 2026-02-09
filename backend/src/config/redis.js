@@ -1,22 +1,10 @@
-import { createClient } from 'redis';
 import dotenv from 'dotenv';
 
 dotenv.config();
 
-const redisClient = createClient({
-  socket: {
-    host: process.env.REDIS_HOST || 'localhost',
-    port: process.env.REDIS_PORT || 6379
-  },
-  password: process.env.REDIS_PASSWORD || undefined
-});
+// 演示模式：禁用 Redis
+const redisClient = null;
 
-redisClient.on('error', (err) => {
-  console.error('Redis Client Error:', err);
-});
-
-redisClient.on('connect', () => {
-  console.log('Redis Client Connected');
-});
+console.warn('Redis disabled in demo mode');
 
 export default redisClient;

@@ -21,7 +21,7 @@ User.hasMany(CheckIn, { foreignKey: 'user_id', as: 'checkIns' });
 CheckIn.belongsTo(User, { foreignKey: 'user_id', as: 'user' });
 
 User.hasMany(InviteRecord, { foreignKey: 'inviter_id', as: 'invitations' });
-User.hasMany(InviteRecord, { foreignKey: 'invitee_id', as: 'invitedBy' });
+User.hasMany(InviteRecord, { foreignKey: 'invitee_id', as: 'invitedRecords' });
 InviteRecord.belongsTo(User, { foreignKey: 'inviter_id', as: 'inviter' });
 InviteRecord.belongsTo(User, { foreignKey: 'invitee_id', as: 'invitee' });
 
