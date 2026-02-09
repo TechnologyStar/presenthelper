@@ -51,6 +51,10 @@
               <el-icon><Share /></el-icon>
               <span>邀请好友</span>
             </el-menu-item>
+            <el-menu-item v-if="userStore.userInfo?.role === 'admin'" index="admin">
+              <el-icon><Setting /></el-icon>
+              <span>管理后台</span>
+            </el-menu-item>
           </el-menu>
         </el-aside>
 
@@ -148,7 +152,19 @@ onMounted(async () => {
 
 const handleMenuSelect = (index) => {
   activeMenu.value = index;
-  ElMessage.info(`${index} 功能开发中，敬请期待`);
+
+  const routes = {
+    'quiz': '/quiz',
+    'cards': '/cards',
+    'checkin': '/checkin',
+    'admin': '/admin/dashboard'
+  };
+
+  if (routes[index]) {
+    router.push(routes[index]);
+  } else {
+    ElMessage.info(`${index} 功能开发中，敬请期待`);
+  }
 };
 
 const handleCommand = async (command) => {

@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import sequelize from './config/database.js';
 import redisClient from './config/redis.js';
 import routes from './routes/index.js';
+import { initializeData } from './seedData.js';
 
 dotenv.config();
 
@@ -41,6 +42,9 @@ const startServer = async () => {
     } else {
       console.warn('Redis not configured, running without cache.');
     }
+
+    // 初始化数据
+    await initializeData();
 
     app.listen(PORT, '0.0.0.0', () => {
       console.log(`Server is running on port ${PORT}`);

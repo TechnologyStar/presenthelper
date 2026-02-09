@@ -25,6 +25,50 @@ const routes = [
     name: 'Home',
     component: () => import('@/views/Home.vue'),
     meta: { requiresAuth: true }
+  },
+  {
+    path: '/quiz',
+    name: 'Quiz',
+    component: () => import('@/views/Quiz.vue'),
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/cards',
+    name: 'Cards',
+    component: () => import('@/views/Cards.vue'),
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/checkin',
+    name: 'CheckIn',
+    component: () => import('@/views/CheckIn.vue'),
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/admin',
+    component: () => import('@/views/AdminLayout.vue'),
+    meta: { requiresAuth: true, requiresAdmin: true },
+    children: [
+      {
+        path: '',
+        redirect: 'dashboard'
+      },
+      {
+        path: 'dashboard',
+        name: 'AdminDashboard',
+        component: () => import('@/views/AdminDashboard.vue')
+      },
+      {
+        path: 'questions',
+        name: 'AdminQuestions',
+        component: () => import('@/views/AdminQuestions.vue')
+      },
+      {
+        path: 'cardsets',
+        name: 'AdminCardSets',
+        component: () => import('@/views/AdminCardSets.vue')
+      }
+    ]
   }
 ];
 
