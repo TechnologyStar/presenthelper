@@ -8,6 +8,7 @@ import checkinRoutes from './checkin.js';
 import inviteRoutes from './invite.js';
 import storyRoutes from './story.js';
 import rankingRoutes from './ranking.js';
+import shopRoutes from './shop.js';
 
 const router = express.Router();
 
@@ -20,6 +21,7 @@ router.use('/checkin', checkinRoutes);
 router.use('/invite', inviteRoutes);
 router.use('/stories', storyRoutes);
 router.use('/ranking', rankingRoutes);
+router.use('/shop', shopRoutes);
 
 router.get('/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
