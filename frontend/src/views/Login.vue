@@ -42,6 +42,23 @@
           </el-button>
         </el-form-item>
 
+        <el-divider>或</el-divider>
+
+        <el-form-item>
+          <el-button
+            size="large"
+            style="width: 100%"
+            @click="handleLinuxdoLogin"
+          >
+            <span style="display: flex; align-items: center; justify-content: center; gap: 8px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+              </svg>
+              使用 Linux Do 登录
+            </span>
+          </el-button>
+        </el-form-item>
+
         <div class="footer-links">
           <router-link to="/register">还没有账号？立即注册</router-link>
         </div>
@@ -55,6 +72,7 @@ import { ref, reactive } from 'vue';
 import { useRouter } from 'vue-router';
 import { ElMessage } from 'element-plus';
 import { useUserStore } from '@/stores/user';
+import { getLinuxdoAuthUrl } from '@/api/linuxdo';
 
 const router = useRouter();
 const userStore = useUserStore();
@@ -86,6 +104,20 @@ const handleLogin = async () => {
       }
     }
   });
+};
+
+const handleLinuxdoLogin = async () => {
+  try {
+    const res = await getLinuxdoAuthUrl();
+    if (res.data && res.data.authUrl) {
+      window.location.href = res.data.authUrl;
+    } else {
+      ElMessage.error('获取授权链接失败');
+    }
+  } catch (error) {
+    console.error('Get Linux Do auth URL failed:', error);
+    ElMessage.error('获取授权链接失败');
+  }
 };
 </script>
 

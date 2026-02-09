@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
 import { login as loginApi, register as registerApi, getProfile } from '@/api/auth';
+import { linuxdoCallback } from '@/api/linuxdo';
 
 export const useUserStore = defineStore('user', () => {
   const token = ref(localStorage.getItem('token') || '');
@@ -29,6 +30,13 @@ export const useUserStore = defineStore('user', () => {
     return res;
   };
 
+  const linuxdoLogin = async (code) => {
+    const res = await linuxdoCallback(code);
+    setToken(res.data.token);
+    setUserInfo(res.data.user);
+    return res;
+  };
+
   const fetchUserInfo = async () => {
     const res = await getProfile();
     setUserInfo(res.data);
@@ -48,6 +56,7 @@ export const useUserStore = defineStore('user', () => {
     setUserInfo,
     login,
     register,
+    linuxdoLogin,
     fetchUserInfo,
     logout
   };

@@ -12,6 +12,7 @@
 - **福利兑换**: 支持第三方兑换码（京东卡、话费充值码等）
 - **特殊活动**: 节假日限时活动提升用户参与度
 - **管理后台**: 题库管理、福利码导入、数据统计等
+- **Linux Do OAuth 登录**: 支持使用 Linux Do 账号快速登录
 
 ## 技术栈
 
@@ -96,7 +97,16 @@ REDIS_HOST=localhost
 REDIS_PORT=6379
 
 JWT_SECRET=your_jwt_secret
+
+# Linux Do OAuth 配置（可选）
+LINUXDO_CLIENT_ID=your_client_id
+LINUXDO_CLIENT_SECRET=your_client_secret
+LINUXDO_REDIRECT_URI=http://localhost:5173/auth/linuxdo/callback
 ```
+
+**配置 Linux Do 登录（可选）:**
+
+如需启用 Linux Do OAuth 登录功能，请参考 [Linux Do OAuth 配置指南](LINUXDO_OAUTH.md)。
 
 ### 启动服务
 
@@ -118,6 +128,7 @@ npm run dev
 
 1. **用户认证**
    - 注册/登录
+   - Linux Do OAuth 登录
    - 个人信息管理
    - 邀请码生成
 
@@ -183,6 +194,7 @@ npm run dev
 
 - 密码 bcrypt 加密存储
 - JWT Token 认证
+- OAuth 2.0 第三方登录（Linux Do）
 - 每日答题次数限制
 - IP 地址监控
 - 答题时间限制（防机器人）
@@ -194,6 +206,7 @@ npm run dev
 
 - [需求文档](.monkeycode/specs/patriotic-quiz-rewards/requirements.md)
 - [技术设计文档](.monkeycode/specs/patriotic-quiz-rewards/design.md)
+- [Linux Do OAuth 配置指南](LINUXDO_OAUTH.md)
 
 ## 许可证
 

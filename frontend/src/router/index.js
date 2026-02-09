@@ -16,6 +16,11 @@ const routes = [
     component: () => import('@/views/Register.vue')
   },
   {
+    path: '/auth/linuxdo/callback',
+    name: 'LinuxdoCallback',
+    component: () => import('@/views/LinuxdoCallback.vue')
+  },
+  {
     path: '/home',
     name: 'Home',
     component: () => import('@/views/Home.vue'),

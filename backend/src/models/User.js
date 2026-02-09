@@ -15,11 +15,11 @@ const User = sequelize.define('User', {
   },
   password: {
     type: DataTypes.STRING(255),
-    allowNull: false
+    allowNull: true
   },
   phone: {
     type: DataTypes.STRING(11),
-    allowNull: false,
+    allowNull: true,
     unique: true
   },
   inviteCode: {
@@ -62,6 +62,31 @@ const User = sequelize.define('User', {
     type: DataTypes.DATE,
     allowNull: true,
     field: 'last_login_at'
+  },
+  linuxdoId: {
+    type: DataTypes.STRING(50),
+    allowNull: true,
+    unique: true,
+    field: 'linuxdo_id',
+    comment: 'Linux Do 用户唯一标识'
+  },
+  linuxdoUsername: {
+    type: DataTypes.STRING(100),
+    allowNull: true,
+    field: 'linuxdo_username',
+    comment: 'Linux Do 用户名'
+  },
+  linuxdoAvatar: {
+    type: DataTypes.STRING(500),
+    allowNull: true,
+    field: 'linuxdo_avatar',
+    comment: 'Linux Do 用户头像'
+  },
+  linuxdoTrustLevel: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+    field: 'linuxdo_trust_level',
+    comment: 'Linux Do 信任等级'
   }
 }, {
   tableName: 'users',
