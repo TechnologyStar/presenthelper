@@ -45,6 +45,24 @@ const routes = [
     meta: { requiresAuth: true }
   },
   {
+    path: '/rewards',
+    name: 'Rewards',
+    component: () => import('@/views/Rewards.vue'),
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/invite',
+    name: 'Invite',
+    component: () => import('@/views/Invite.vue'),
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/stories',
+    name: 'Stories',
+    component: () => import('@/views/Stories.vue'),
+    meta: { requiresAuth: true }
+  },
+  {
     path: '/admin',
     component: () => import('@/views/AdminLayout.vue'),
     meta: { requiresAuth: true, requiresAdmin: true },
