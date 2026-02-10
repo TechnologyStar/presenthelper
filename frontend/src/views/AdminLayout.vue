@@ -22,6 +22,10 @@
             <el-icon><Collection /></el-icon>
             <span>卡组管理</span>
           </el-menu-item>
+          <el-menu-item index="/admin/stories">
+            <el-icon><Reading /></el-icon>
+            <span>故事管理</span>
+          </el-menu-item>
           <el-menu-item index="/home">
             <el-icon><HomeFilled /></el-icon>
             <span>返回首页</span>
@@ -52,7 +56,7 @@
 import { ref, computed, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { ElMessage, ElMessageBox } from 'element-plus';
-import { Document, Collection, HomeFilled, DataAnalysis } from '@element-plus/icons-vue';
+import { Document, Collection, HomeFilled, DataAnalysis, Reading } from '@element-plus/icons-vue';
 import { useUserStore } from '@/stores/user';
 
 const router = useRouter();
@@ -67,7 +71,8 @@ const pageTitle = computed(() => {
   const titles = {
     '/admin/dashboard': '数据统计',
     '/admin/questions': '题目管理',
-    '/admin/cardsets': '卡组管理'
+    '/admin/cardsets': '卡组管理',
+    '/admin/stories': '故事管理'
   };
   return titles[route.path] || '管理后台';
 });

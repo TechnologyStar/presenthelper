@@ -51,6 +51,10 @@
               <el-icon><Share /></el-icon>
               <span>邀请好友</span>
             </el-menu-item>
+            <el-menu-item index="ranking">
+              <el-icon><TrophyBase /></el-icon>
+              <span>积分排行</span>
+            </el-menu-item>
             <el-menu-item v-if="userStore.userInfo?.role === 'admin'" index="admin">
               <el-icon><Setting /></el-icon>
               <span>管理后台</span>

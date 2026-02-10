@@ -63,6 +63,12 @@ const routes = [
     meta: { requiresAuth: true }
   },
   {
+    path: '/ranking',
+    name: 'Ranking',
+    component: () => import('@/views/Ranking.vue'),
+    meta: { requiresAuth: true }
+  },
+  {
     path: '/admin',
     component: () => import('@/views/AdminLayout.vue'),
     meta: { requiresAuth: true, requiresAdmin: true },
@@ -85,6 +91,11 @@ const routes = [
         path: 'cardsets',
         name: 'AdminCardSets',
         component: () => import('@/views/AdminCardSets.vue')
+      },
+      {
+        path: 'stories',
+        name: 'AdminStories',
+        component: () => import('@/views/AdminStories.vue')
       }
     ]
   }
