@@ -2,6 +2,34 @@
 
 一个基于 Web 的爱国主义教育互动平台，通过答题、签到、分享、阅读红色故事等多种方式激励用户学习红色文化知识，并提供第三方兑换码作为福利奖励。
 
+## 🚀 快速部署
+
+### 使用 Docker（推荐）
+
+```bash
+# 1. 克隆仓库
+git clone https://github.com/TechnologyStar/presenthelper.git
+cd presenthelper
+
+# 2. 准备环境变量
+cp .env.docker.example .env
+# 编辑 .env 文件，修改数据库密码和 JWT 密钥
+
+# 3. 启动所有服务
+docker-compose up -d
+
+# 4. 访问应用
+# 前端: http://localhost
+# 后端: http://localhost:3001
+# 默认账号: admin / admin123
+```
+
+📖 详细文档: [DOCKER_DEPLOYMENT.md](./DOCKER_DEPLOYMENT.md)
+
+### 传统方式部署
+
+查看下方的"快速开始"章节。
+
 ## 项目特性
 
 - **多样化答题系统**: 每日答题任务，涵盖爱国红色主题知识
