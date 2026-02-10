@@ -174,3 +174,9 @@
 *.lz
 *.lzma
 *.iso
+
+# Docker
+**/.env.docker
+**/docker-compose.override.yml
+**/*.tar
+presenthelper-*.tar

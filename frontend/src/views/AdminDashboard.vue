@@ -245,15 +245,6 @@ const formatDate = (dateStr) => {
   return `${date.getMonth() + 1}/${date.getDate()}`;
 };
 
-const getStatistics = async () => {
-  const response = await fetch('/api/admin/statistics', {
-    headers: {
-      'Authorization': `Bearer ${localStorage.getItem('token')}`
-    }
-  });
-  return response.json();
-};
-
 onMounted(() => {
   loadStats();
 });
